@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Bar Graphs</title>
+    <link href="css/default.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="chart-container1">
+        <canvas id="bar-chartcanvas1"></canvas>
+    </div>
+    <div class="chart-container2">
+        <canvas id="bar-chartcanvas2"></canvas>
+    </div>
+    <div class="chart-container3">
+        <canvas id="bar-chartcanvas3"></canvas>
+    </div>
+    <div class="chart-container4">
+        <canvas id="bar-chartcanvas4"></canvas>
+    </div>
+
+
+    <!-- javascript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <!-- <script src="js/bar-multicolor.js"></script> -->
+</body>
+
+<script>
+
+    $(function () {
+
+        var ct1 = $("#bar-chartcanvas1");
+        var ct2 = $("#bar-chartcanvas2");
+        var ct3 = $("#bar-chartcanvas3");
+        var ct4 = $("#bar-chartcanvas4");
+
+
+        var chart1 = new Chart(ct1, {
+            type: "bar",
+            data: JSON.parse('<%- data1 %>'),
+            options: JSON.parse('<%- options1 %>')
+        });
+        var chart2 = new Chart(ct2, {
+            type: "bar",
+            data: JSON.parse('<%- data2 %>'),
+            options: JSON.parse('<%- options2 %>')
+        });
+        var chart3 = new Chart(ct3, {
+            type: "bar",
+            data: JSON.parse('<%- data3 %>'),
+            options: JSON.parse('<%- options3 %>')
+        });
+        var chart4 = new Chart(ct4, {
+            type: "bar",
+            data: JSON.parse('<%- data4 %>'),
+            options: JSON.parse('<%- options4 %>')
+        });
+    })
+</script>
+
+</html>
