@@ -12,6 +12,12 @@ This Project is demo project for fission Lab(http://www.fissionlabs.com/) and al
 
 3.)in graph page we are appending the server side data
 
+#Screenshots
+
+![Home Page](https://github.com/8801362790/fission_lab_demo/blob/master/views/img/home.jpg)
+
+![Graph Page](https://github.com/8801362790/fission_lab_demo/blob/master/views/img/graph.png)
+
 #references
 
 https://www.npmjs.com/package/express
