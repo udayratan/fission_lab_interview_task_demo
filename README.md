@@ -14,9 +14,9 @@ This Project is demo project for fission Lab(http://www.fissionlabs.com/) and al
 
 #Screenshots
 
-![Home Page](https://github.com/8801362790/fission_lab_demo/blob/master/views/img/home.jpg)
+![Alt text](https://github.com/8801362790/fission_lab_demo/blob/master/views/img/home.jpg)
 
-![Graph Page](https://github.com/8801362790/fission_lab_demo/blob/master/views/img/graph.png)
+![Alt text](https://github.com/8801362790/fission_lab_demo/blob/master/views/img/graph.png)
 
 #references
 
