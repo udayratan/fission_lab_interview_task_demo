@@ -15,20 +15,6 @@ exports.CSVParsing = (req, res) => {
     });
     form.on('end', () => {
         let workbook = XLSX.readFile(tmpfile);
-        let colorArray = [
-            "red",
-            "green",
-            "blue",
-            "purple",
-            "magenta",
-            "aqua",
-            "salmon",
-            "darkgray",
-            "pink",
-            "coral"
-        ];
-        let backgroundColor = [];
-        let borderColor = [];
         fs.unlink(tmpfile, (err) => {
             if (err) console.log(err);
             let ParsedData = workbook.Sheets.Sheet1;
@@ -37,170 +23,63 @@ exports.CSVParsing = (req, res) => {
             let Series3_Data = [];
             let Series4_Data = [];
             for (let i = 66; i < 77; i++) {
-                backgroundColor.push(
-                    colorArray[Math.floor(Math.random() * colorArray.length)]
-                );
-                borderColor.push('#111');
                 let key = String.fromCharCode(i);
                 let data1 = ParsedData[key + '1']["v"].split('|');
                 let data2 = ParsedData[key + '2']["v"].split('|');
                 let data3 = ParsedData[key + '3']["v"].split('|');
                 let data4 = ParsedData[key + '4']["v"].split('|');
                 Series1_Data.push({
-                    year: data1[0],
-                    value: data1[1]
+                    x: data1[0],
+                    y: data1[1]
                 });
                 Series2_Data.push({
-                    year: data2[0],
-                    value: data2[1]
+                    x: data2[0],
+                    y: data2[1]
                 });
                 Series3_Data.push({
-                    year: data3[0],
-                    value: data3[1]
+                    x: data3[0],
+                    y: data3[1]
                 });
                 Series4_Data.push({
-                    year: data4[0],
-                    value: data4[1]
+                    x: data4[0],
+                    y: data4[1]
                 });
             };
-            Controller.ArrayFunction(Series1_Data, (err, Labels1, Values1) => {
+            Controller.ArrayFunction(Series1_Data, (err, Series1_Data) => {
                 if (!err) {
-                    Controller.ArrayFunction(Series2_Data, (err, Labels2, Values2) => {
+                    Controller.ArrayFunction(Series2_Data, (err, Series2_Data) => {
                         if (!err) {
-                            Controller.ArrayFunction(Series3_Data, (err, Labels3, Values3) => {
+                            Controller.ArrayFunction(Series3_Data, (err, Series3_Data) => {
                                 if (!err) {
-                                    Controller.ArrayFunction(Series4_Data, (err, Labels4, Values4) => {
+                                    Controller.ArrayFunction(Series4_Data, (err, Series4_Data) => {
                                         if (!err) {
-                                            let data1 = {
-                                                labels: Labels1,
-                                                datasets: [
-                                                    {
-                                                        data: Values1,
-                                                        backgroundColor: backgroundColor,
-                                                        borderColor: borderColor,
-                                                        borderWidth: 1
-                                                    }
-                                                ]
-                                            };
-                                            let options1 = {
-                                                title: {
-                                                    display: true,
-                                                    position: "top",
-                                                    text: "Series 1",
-                                                    fontSize: 18,
-                                                    fontColor: "#111"
+                                            let data = [
+                                                {
+                                                    type: "line",
+                                                    showInLegend: true,
+                                                    legendText: "Series 1",
+                                                    dataPoints:Series1_Data
                                                 },
-                                                legend: {
-                                                    display: false
+                                                {
+                                                    type: "line",
+                                                    showInLegend: true,
+                                                    legendText: "Series 2",
+                                                    dataPoints:Series2_Data
                                                 },
-                                                scales: {
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            min: 0
-                                                        }
-                                                    }]
+                                                {
+                                                    type: "line",
+                                                    showInLegend: true,
+                                                    legendText: "Series 3",
+                                                    dataPoints:Series3_Data
+                                                },
+                                                {
+                                                    type: "line",
+                                                    showInLegend: true,
+                                                    legendText: "Series 4",
+                                                    dataPoints:Series4_Data
                                                 }
-                                            };
-                                            let data2 = {
-                                                labels: Labels2,
-                                                datasets: [
-                                                    {
-                                                        data: Values2,
-                                                        backgroundColor: backgroundColor,
-                                                        borderColor: borderColor,
-                                                        borderWidth: 1
-                                                    }
-                                                ]
-                                            };
-                                            let options2 = {
-                                                title: {
-                                                    display: true,
-                                                    position: "top",
-                                                    text: "Series 2",
-                                                    fontSize: 18,
-                                                    fontColor: "#111"
-                                                },
-                                                legend: {
-                                                    display: false
-                                                },
-                                                scales: {
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            min: 0
-                                                        }
-                                                    }]
-                                                }
-                                            };
-                                            let data3 = {
-                                                labels: Labels3,
-                                                datasets: [
-                                                    {
-                                                        data: Values3,
-                                                        backgroundColor: backgroundColor,
-                                                        borderColor: borderColor,
-                                                        borderWidth: 1
-                                                    }
-                                                ]
-                                            };
-                                            let options3 = {
-                                                title: {
-                                                    display: true,
-                                                    position: "top",
-                                                    text: "Series 3",
-                                                    fontSize: 18,
-                                                    fontColor: "#111"
-                                                },
-                                                legend: {
-                                                    display: false
-                                                },
-                                                scales: {
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            min: 0
-                                                        }
-                                                    }]
-                                                }
-                                            };
-                                            let data4 = {
-                                                labels: Labels4,
-                                                datasets: [
-                                                    {
-                                                        data: Values4,
-                                                        backgroundColor: backgroundColor,
-                                                        borderColor: borderColor,
-                                                        borderWidth: 1
-                                                    }
-                                                ]
-                                            };
-                                            let options4 = {
-                                                title: {
-                                                    display: true,
-                                                    position: "top",
-                                                    text: "Series 4",
-                                                    fontSize: 18,
-                                                    fontColor: "#111"
-                                                },
-                                                legend: {
-                                                    display: false
-                                                },
-                                                scales: {
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            min: 0
-                                                        }
-                                                    }]
-                                                }
-                                            };
-                                            res.render('graph', {
-                                                data1: JSON.stringify(data1),
-                                                options1: JSON.stringify(options1),
-                                                data2: JSON.stringify(data2),
-                                                options2: JSON.stringify(options2),
-                                                data3: JSON.stringify(data3),
-                                                options3: JSON.stringify(options3),
-                                                data4: JSON.stringify(data4),
-                                                options4: JSON.stringify(options4)
-                                            });
+                                            ];
+                                            res.render('graph', { data: JSON.stringify(data) });
                                         }
                                     })
                                 }
@@ -217,34 +96,26 @@ exports.ArrayFunction = (myArray, callback) => {
     let NewArray = [];
     let Data = {};
     async.eachSeries(myArray, (item, callback) => {
-        if (Data[item.year] == null || Data[item.year] == 0 || Data[item.year] == undefined) {
-            Data[item.year] = parseInt(item.value);
+        if (Data[item.x] == null || Data[item.x] == 0 || Data[item.x] == undefined) {
+            Data[item.x] = parseInt(item.y);
         } else {
-            Data[item.year] += parseInt(item.value);
+            Data[item.x] += parseInt(item.y);
         }
         callback();
     }, (err) => {
         async.eachSeries(Object.keys(Data), (key, resp) => {
             NewArray.push({
-                year: key,
-                value: Data[key]
+                x: key,
+                y: Data[key]
             });
             resp();
         }, (err) => {
             NewArray = NewArray.sort(function Sorted(a, b) { // non-anonymous as you ordered...
-                return b.year < a.year ? 1 // if b should come earlier, push a to end
-                    : b.year > a.year ? -1 // if b should come later, push a to begin
+                return b.x < a.x ? 1 // if b should come earlier, push a to end
+                    : b.x > a.x ? -1 // if b should come later, push a to begin
                         : 0;                   // a and b are equal
             });
-            let LabelsArray = [];
-            let ValuesArray = [];
-            async.eachSeries(NewArray, (element, neXt) => {
-                LabelsArray.push(element.year);
-                ValuesArray.push(element.value);
-                neXt()
-            }, (err) => {
-                callback(false, LabelsArray, ValuesArray);
-            })
+            callback(false, NewArray);
         })
     })
 }

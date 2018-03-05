@@ -28,7 +28,7 @@ https://www.npmjs.com/package/formidable
 
 https://www.npmjs.com/package/async
 
-https://www.dyclassroom.com/chartjs/how-to-create-a-bar-graph-using-chartjs
+https://canvasjs.com/javascript-charts/multi-series-chart
 
 #Steps for Running Project
 
@@ -48,7 +48,7 @@ https://www.dyclassroom.com/chartjs/how-to-create-a-bar-graph-using-chartjs
 
 #Screenshots
 
-![Alt text](https://github.com/8801362790/fission_lab_demo/blob/master/views/img/home.jpg)
+![Alt text](https://github.com/8801362790/fission_lab_demo/blob/master/views/img/home.png)
 
 ![Alt text](https://github.com/8801362790/fission_lab_demo/blob/master/views/img/graph.png)
 
