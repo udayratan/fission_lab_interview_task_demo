@@ -2,7 +2,7 @@
 fission lab demo project
 
 #Author Note
-This Project is demo project for fission Lab(http://www.fissionlabs.com/) and all the rights are reserve to Ratan Uday Kumar(uday.raj15@yahoo.com).
+This Project is demo project for fission Labs(http://www.fissionlabs.com/) and all the rights are reserve to Ratan Uday Kumar(ratan.uday.kumar@gmail.com).
 
 #Project Overviews
 
